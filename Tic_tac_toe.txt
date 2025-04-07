@@ -1,0 +1,79 @@
+ Code Breakdown
+
+1. Main Entry Point
+if __name__ == "__main__":
+    tic_tac_toe()
+Starts the game by calling tic_tac_toe() when the script is run.
+
+2. Game Mode Selection
+def tic_tac_toe():
+    ...
+    choice = input("Choose game mode (1 or 2): ")
+Lets you choose between:
+1 ➝ Player vs Player
+2 ➝ Player vs AI
+Stores your choice in vs_ai
+
+3. Game Loop + Scoreboard
+scores = {"X": 0, "O": 0, "Ties": 0}
+while True:
+    scores = play_game(vs_ai=vs_ai, scores=scores)
+Initializes a scoreboard
+Plays the game in a loop so you can play again and again
+Keeps updating and showing the scores after each match
+
+4. play_game Function
+This is the heart of the game.
+def play_game(vs_ai=False, scores={"X": 0, "O": 0, "Ties": 0}):
+    board = [[" " for _ in range(3)] for _ in range(3)]
+Creates a 3x3 empty board:
+[
+ [" ", " ", " "],
+ [" ", " ", " "],
+ [" ", " ", " "]
+]
+
+5. Game Turns
+while True:
+    if vs_ai and current_player == "O":
+        row, col = ai_move(board)
+    else:
+        row = int(input(...)) - 1
+        col = int(input(...)) - 1
+If it's AI’s turn, it uses the ai_move function to pick a random empty cell.
+If it’s a player’s turn, it takes manual input.
+
+6. Making a Move
+if board[row][col] == " ":
+    board[row][col] = current_player
+Puts 'X' or 'O' in the chosen cell
+Prints the updated board after each move
+
+7. Win & Tie Checks
+if check_win(board, current_player):
+    ...
+elif is_full(board):
+    ...
+check_win: Checks all rows, columns, and diagonals
+is_full: Checks if the board is completely filled
+Updates the scores accordingly
+
+8. AI Move Logic
+def ai_move(board):
+    empty_cells = get_empty_cells(board)
+    return random.choice(empty_cells)
+AI picks a random move from all available (empty) cells
+
+9. Game Replay
+again = input(" Play again? (y/n): ").lower()
+if again != 'y':
+    break
+Lets the player decide whether to replay or exit
+
+Game Flow Example
+Let’s say you pick Player vs AI:
+You go first (as 'X')
+AI goes second (as 'O')
+Each move is printed on the board
+When someone wins or it's a tie, the result and scoreboard are printed
+You’re asked if you want to play again
