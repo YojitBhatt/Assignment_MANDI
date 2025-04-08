@@ -44,15 +44,15 @@ def play_game(vs_ai=False, scores={"X": 0, "O": 0, "Ties": 0}):
                 row = int(input(f"Player {current_player}, enter row (1-3): ")) - 1
                 col = int(input(f"Player {current_player}, enter column (1-3): ")) - 1
             except ValueError:
-                print("❌ Invalid input. Enter numbers between 1 and 3.")
+                print("Invalid input. Enter numbers between 1 and 3.")
                 continue
 
             if row not in range(3) or col not in range(3):
-                print("❌ Out of range! Choose row and column between 1 and 3.")
+                print("Out of range! Choose row and column between 1 and 3.")
                 continue
 
             if board[row][col] != " ":
-                print("❌ Cell already taken. Try again.")
+                print("Cell already taken. Try again.")
                 continue
 
         if board[row][col] == " ":
@@ -66,13 +66,13 @@ def play_game(vs_ai=False, scores={"X": 0, "O": 0, "Ties": 0}):
             break
 
         if is_full(board):
-            print("😐 It's a tie!")
+            print("It's a tie!")
             scores["Ties"] += 1
             break
 
         current_player = "O" if current_player == "X" else "X"
 
-    print(f"📊 Scoreboard → X: {scores['X']} | O: {scores['O']} | Ties: {scores['Ties']}")
+    print(f"Scoreboard → X: {scores['X']} | O: {scores['O']} | Ties: {scores['Ties']}")
     return scores
 
 def tic_tac_toe():
@@ -89,15 +89,15 @@ def tic_tac_toe():
             vs_ai = True
             break
         else:
-            print("❌ Invalid choice. Please select 1 or 2.")
+            print(" Invalid choice. Please select 1 or 2.")
 
     scores = {"X": 0, "O": 0, "Ties": 0}
 
     while True:
         scores = play_game(vs_ai=vs_ai, scores=scores)
-        again = input("🔁 Play again? (y/n): ").lower()
+        again = input(" Play again? (y/n): ").lower()
         if again != 'y':
-            print("👋 Thanks for playing!")
+            print(" Thanks for playing!")
             break
 
 # Run the game
