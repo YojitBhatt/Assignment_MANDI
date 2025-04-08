@@ -76,7 +76,7 @@ def play_game(vs_ai=False, scores={"X": 0, "O": 0, "Ties": 0}):
     return scores
 
 def tic_tac_toe():
-    print("🎮 Welcome to Tic Tac Toe!")
+    print("Welcome to Tic Tac Toe!")
     print("1. Player vs Player")
     print("2. Player vs AI")
 
